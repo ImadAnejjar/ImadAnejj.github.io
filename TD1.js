@@ -32,13 +32,17 @@ contract Organisation {
     }
 
     //Definition of the Project
+    //@dev Constructor setting the name of the project and the adress of the one who create
     function ObjetduVote(string _name) {
-        name= _name;
+        name= _name; 
 	    creator = msg.sender;
     }
 
     //Functions of votes
     function VoteBlanc() transactionIsAlreadyDone() {
+    	//@param _voteType the Type of the vote which is Blanc in this case
+    	//@param _votant the adress of the votant
+    	//@param _Vote Contain the param VoteType and votant
 	    votes.push(Vote({
 		voteType: VoteType.Blanc,
 		votant: msg.sender,
@@ -46,12 +50,18 @@ contract Organisation {
     }
 
     function VoteOui() public transactionIsAlreadyDone() {
+    	//@param _voteType the Type of the vote which is Oui in this case
+    	//@param _votant the adress of the votant
+    	//@param _Vote Contain the param VoteType and votant
     	votes.push(Vote({
 		voteType: VoteType.Oui,
 		votant: msg.sender,
     	}));
     }
     function VoteNon() public transactionIsAlreadyDone() {
+    	//@param voteType the Type of the vote which is Non in this case
+    	//@param votant the adress of the votant
+    	//@param Vote Contain the param VoteType and votant
 	    votes.push(Vote({
 		voteType: VoteType.Non,
 		votant: msg.sender,
@@ -60,6 +70,9 @@ contract Organisation {
 
     //To knows the number of voters and update the numbers of each option
     function getVoteCount() public returns (uint) {
+    	//@param valueblanc the number of people who voted blanc
+    	//@param valueblanc the number of people who voted oui
+    	//@param valueblanc the number of people who voted non
     	valueblanc = 0;
 	    valueoui = 0;
 	    valuenon = 0;
@@ -84,6 +97,7 @@ contract Organisation {
 
     //To knows the resultat only if the 15 people have voted
     function getResultat() public finduvote() returns(bool,uint,uint,uint){
+    	//@param resultat true if it's accepted
         bool resultat= false;
   	    getVoteCount();
   	    if(valueoui>(votes.length/2)+1){
