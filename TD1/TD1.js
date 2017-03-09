@@ -69,7 +69,7 @@ contract Organisation {
     }
 
     //To knows the number of voters and update the numbers of each option
-    function getVoteCount() public returns (uint) {
+    function getVoteCount() public return (uint) {
     	//@param valueblanc the number of people who voted blanc
     	//@param valueblanc the number of people who voted oui
     	//@param valueblanc the number of people who voted non
@@ -96,7 +96,7 @@ contract Organisation {
 
 
     //To knows the resultat only if the 15 people have voted
-    function getResultat() public finduvote() returns(bool,uint,uint,uint){
+    function getResultat() public finduvote() return(bool,uint,uint,uint){
     	//@param resultat true if it's accepted
         bool resultat= false;
   	    getVoteCount();
