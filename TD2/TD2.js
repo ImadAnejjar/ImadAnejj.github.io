@@ -5,7 +5,6 @@ contract Entité {
     string public name;
     address creator;
   
-    //Creation of the list who will contains all the votes
     // Un peu comme des listes
     mapping (address=> bool) public citoyens;
     mapping (address => uint) public soldes;
@@ -37,7 +36,4 @@ contract Entité {
             	return false
             }
     }
-
-    
-
 }
